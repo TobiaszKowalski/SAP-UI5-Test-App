@@ -20,7 +20,10 @@ sap.ui.define([
 			let oModel = new JSONModel(oData);
 			//Подключаем модель к слою представления
 			this.setModel(oModel);
-			this._helloDialog = new HelloDialog(this.getRootControl())
+			this._helloDialog = new HelloDialog(this.getRootControl());
+
+			// создание views основанных на определенных в manifest.json url
+			this.getRouter().initialize();
         },
 		exit: function () {
 			this._helloDialog.destroy();
