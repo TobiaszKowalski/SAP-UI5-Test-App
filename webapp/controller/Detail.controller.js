@@ -1,6 +1,7 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
-], function(Controller, JSONModel, formatter, Filter, FilterOperator) {
+	"sap/ui/core/routing/History"
+], function(Controller, History) {
 	"use strict";
 	return Controller.extend("sap.ui.demo.walkthrough.controller.Detail", {
 		onInit: function() {
@@ -10,7 +11,17 @@ sap.ui.define([
 			this.getView().bindElement({
 				path: `/${window.decodeURIComponent(oEvent.getParameter("arguments").invoicePath)}`,
 				model: "invoice"
-			})
+			});
+		},
+		onNavBack: function() {
+			let oHistory = History.getInstance();
+			let sPreviousHash = oHistory.getPreviousHash();
+
+			if (sPreviousHash !== undefined) {
+				window.history.go(-1);
+			} else {
+				this.getOwnerComponent().getRouter().navTo("overview", {}, true);
+			};
 		}
 	});
 });
