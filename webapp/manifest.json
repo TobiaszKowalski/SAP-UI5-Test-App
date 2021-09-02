@@ -69,6 +69,10 @@
                 "sap.m": {}
             } 
         },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
         "models": {
             "i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",
@@ -129,10 +133,6 @@
             "component" : "<extendedComponentId>",
 			"minVersion": "<minComp1Version>",
 			"extensions": {}
-        },
-        "contentDensities": {
-            "compact": false,
-            "cozy": false
         }
     },
 
